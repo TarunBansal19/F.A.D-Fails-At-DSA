@@ -15,6 +15,14 @@ const checkForFailure = () => {
 const observer = new MutationObserver(() => {
     if (isListeningForFailure && checkForFailure()) {
         fahhAudio.play().catch(e => console.log("Click the page once to enable sound!"));
+
+        chrome.storage.local.get(["shameCount"] , (result)=>{
+            let currentCount = result.shameCount || 0
+            let newCount = currentCount+1;
+
+            chrome.storage.local.set({shameCount :newCount });
+            console.log("Total Shame Level: " + newCount)
+        });
         isListeningForFailure = false;
     }
     if (document.body.innerText.includes("Accepted")) {

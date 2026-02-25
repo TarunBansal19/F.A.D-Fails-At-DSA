@@ -3,6 +3,10 @@
   "name": "F.A.D - (Fails At DSA)",
   "version": "1.1",
   "description": "Plays 'fahhh' when a LeetCode submission fails.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://leetcode.com/problems/*"],
